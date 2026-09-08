@@ -1,6 +1,6 @@
 # MarketLens 
 
-AI-powered real-time crypto news and market impact analyzer. Built for the **Binance Agent OS Mini Hackathon (Track B)**.
+AI-powered real-time crypto news and market impact analyzer. Built for the **Binance Agent OS Mini Hackathon (Track A)**.
 
 ## What it does
 - **Live Tickers:** Real-time data streams for crypto pairs (BTCUSDT, ETHUSDT) using Binance market feeds.
