@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MarketLens — AI Market Intelligence</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="brand">
+        <div class="brand-mark">
+          <svg
+            class="marketlens-logo"
+            viewBox="0 0 64 64"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-label="MarketLens logo"
+          >
+            <circle cx="29" cy="29" r="20" fill="none" stroke="currentColor" stroke-width="5" />
+            <path d="M43 43L56 56" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" />
+            <path d="M18 34L24 28L29 32L37 22L42 25" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="42" cy="25" r="2.5" fill="currentColor" />
+          </svg>
+        </div>
+        <div>
+          <div class="brand-name">MarketLens</div>
+          <div class="brand-subtitle">AI Market Intelligence</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-item active" id="overviewNav" data-page="overview">
+          Overview
+        </div>
+        <div class="nav-item" id="newsNav" data-page="news">
+          News
+        </div>
+      </nav>
+
+      <!-- BLOK IDENTITAS -->
+      <div class="sidebar-identity">
+        <div class="identity-line"></div>
+        <div class="identity-text">Built by Anara Shakila</div>
+        <a href="https://x.com/0xalshaby" target="_blank" rel="noopener noreferrer" class="identity-link">
+          @0xalshaby
+        </a>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="status-dot"></div>
+        <span>MCP Node Online</span>
+      </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+      <!-- ========================= -->
+      <!-- OVERVIEW PAGE -->
+      <!-- ========================= -->
+
+      <div id="overviewPage" data-page-content="overview">
+        <!-- TOP BAR -->
+        <header class="topbar">
+          <div>
+            <div class="page-label">MARKET OVERVIEW</div>
+            <h1>Crypto Market Intelligence</h1>
+          </div>
+          <div class="topbar-status">
+            <span class="status-dot"></span> LIVE
+          </div>
+        </header>
+
+        <!-- LIVE TICKERS -->
+        <section class="ticker-row">
+          <div class="ticker-card" data-ticker="BTCUSDT">
+            <div class="ticker-symbol">BTCUSDT</div>
+            <div class="ticker-price" id="btcPrice">—</div>
+            <div class="ticker-change" id="btcChange">—</div>
+          </div>
+          <div class="ticker-card" data-ticker="ETHUSDT">
+            <div class="ticker-symbol">ETHUSDT</div>
+            <div class="ticker-price" id="ethPrice">—</div>
+            <div class="ticker-change" id="ethChange">—</div>
+          </div>
+          <div class="ticker-card" data-ticker="BNBUSDT">
+            <div class="ticker-symbol">BNBUSDT</div>
+            <div class="ticker-price" id="bnbPrice">—</div>
+            <div class="ticker-change" id="bnbChange">—</div>
+          </div>
+          <div class="ticker-card" data-ticker="SOLUSDT">
+            <div class="ticker-symbol">SOLUSDT</div>
+            <div class="ticker-price" id="solPrice">—</div>
+            <div class="ticker-change" id="solChange">—</div>
+          </div>
+          <div class="ticker-card" data-ticker="LINKUSDT">
+            <div class="ticker-symbol">LINKUSDT</div>
+            <div class="ticker-price" id="linkPrice">—</div>
+            <div class="ticker-change" id="linkChange">—</div>
+          </div>
+        </section>
+
+        <!-- MARKET ANALYSIS -->
+        <section class="market-analysis-section">
+          <div class="section-heading" style="margin-bottom: 15px;">
+            <div class="eyebrow">MARKET ANALYSIS</div>
+            <h3>What is happening in the market?</h3>
+          </div>
+
+          <div class="market-tabs" role="tablist" aria-label="Market pairs">
+            <button class="market-tab active" data-market-symbol="BTCUSDT" type="button">BTCUSDT</button>
+            <button class="market-tab" data-market-symbol="ETHUSDT" type="button">ETHUSDT</button>
+            <button class="market-tab" data-market-symbol="BNBUSDT" type="button">BNBUSDT</button>
+            <button class="market-tab" data-market-symbol="SOLUSDT" type="button">SOLUSDT</button>
+          </div>
+
+          <div class="market-analysis-grid">
+            
+            <!-- KOLOM KIRI: CHART -->
+            <div class="market-chart-section market-analysis-chart" id="marketChartSection">
+              <div class="market-chart-card">
+                <div class="chart-header">
+                  <div>
+                    <div class="chart-symbol" id="chartSymbol">BTCUSDT</div>
+                    <div class="chart-price" id="chartPrice">—</div>
+                  </div>
+                  <div class="chart-change" id="chartChange">—</div>
+                </div>
+                <div class="chart-meta">
+                  <span id="chartUpdated">48H · 1H CANDLES</span>
+                  <span id="mcpStatusBadge" style="color: var(--green);">● BINANCE MCP CONNECTED</span>
+                </div>
+                <div class="chart-wrap">
+                  <div class="chart-loading" id="chartLoading">Loading market history…</div>
+                  <svg id="marketChart" viewBox="0 0 1000 360" preserveAspectRatio="none" aria-label="Token market price chart"></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- KOLOM KANAN: SPOT & INSIGHT -->
+            <div class="market-side-column">
+              <div class="analysis-card spot-market-card">
+                <div class="result-label">SPOT MARKET</div>
+                <div class="spot-price" id="spotPrice">—</div>
+                <div class="spot-change" id="spotChange">—</div>
+                <div class="spot-meta">
+                  <span>24H VOLUME</span>
+                  <strong id="spotVolume">—</strong>
+                </div>
+              </div>
+              <div class="analysis-card market-insight-card">
+                <div class="result-label">MARKET ANALYSIS</div>
+                <h4 id="marketAnalysisTitle">BTCUSDT</h4>
+                <p id="marketInsight">Select an asset to explore its current market context.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- MODUL TELEMETRY LOG -->
+          <section class="telemetry-log-section" style="margin-top: 25px;">
+            <div class="telemetry-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-family: var(--font-mono); font-size: 11px;">
+              <span style="color: var(--text-muted); letter-spacing: 1px;">SYSTEM TELEMETRY</span>
+              <span style="color: var(--green);">BINANCE MCP ● CONNECTED</span>
+            </div>
+            <div class="telemetry-card" style="background: var(--bg); border: 1px solid var(--border); padding: 12px 16px; font-family: var(--font-mono);">
+              <div id="telemetryLogStream" style="max-height: 120px; overflow-y: auto; font-size: 11px; color: var(--amber); display: flex; flex-direction: column; gap: 4px;">
+                <div>> [22:47:54] Market data synced</div>
+                <div>> [22:47:54] Order book synced</div>
+                <div>> [22:47:54] Analysis compiled</div>
+                <div>> [22:47:54] Chart updated</div>
+              </div>
+            </div>
+          </section>
+
+        </section>
+      </div>
+
+
+      <!-- ========================= -->
+      <!-- NEWS PAGE -->
+      <!-- ========================= -->
+
+      <div id="newsPage" data-page-content="news" hidden>
+
+        <header class="topbar">
+          <div>
+            <div class="page-label">CRYPTO NEWS</div>
+            <h1>Latest Market News</h1>
+          </div>
+          <div class="topbar-status">
+            <span class="status-dot"></span> NEWS
+          </div>
+        </header>
+
+        <section class="news-page">
+          <div class="section-heading" style="margin-bottom: 20px;">
+            <div class="eyebrow">NEWS FEED</div>
+            <h3>What is moving crypto?</h3>
+          </div>
+
+          <div class="news-list">
+
+            <!-- BERITA 1 -->
+            <div class="news-card-wrapper">
+              <div class="news-card">
+                <div class="news-meta">BITCOIN · MARKET</div>
+                <h2>What Drove Bitcoin’s August Rally?</h2>
+                <p>Bitcoin surged above $80,000 in late August as spot buying outpaced perpetuals, highlighting changing market dynamics.</p>
+                <div class="news-footer">
+                  <a href="https://www.binance.com/en/blog/research/what-drove-bitcoins-august-rally-4088751955101426104" target="_blank" rel="noopener noreferrer" class="read-source-link">Read source ↗</a>
+                  <button class="analyze-btn" data-asset="BTCUSDT" data-title="What Drove Bitcoin’s August Rally?">ANALYZE IMPACT</button>
+                </div>
+              </div>
+              <div class="ai-analysis-container" hidden>
+                 <div class="ai-header">
+                    <div class="ai-badge">AI AGENT ANALYSIS</div>
+                    <div class="ai-metrics">
+                       <span class="metric-pill sentiment-badge">--</span>
+                       <span class="metric-pill impact-badge">Impact: --</span>
+                       <span class="metric-pill confidence-badge">Confidence: --%</span>
+                    </div>
+                 </div>
+                 <div class="ai-market-context">
+                    <div class="context-box"><span class="context-label">Live Price</span><span class="context-value live-price">--</span></div>
+                    <div class="context-box"><span class="context-label">24h Change</span><span class="context-value live-change">--</span></div>
+                 </div>
+                 <div class="ai-chart-wrapper">
+                    <div class="scanline"></div>
+                    <svg class="ai-inline-chart" viewBox="0 0 800 200" preserveAspectRatio="none"></svg>
+                 </div>
+                 <div class="ai-reasoning">
+                    <div class="reasoning-title">> SYSTEM REASONING:</div>
+                    <p class="reasoning-text">Awaiting analysis...</p>
+                 </div>
+              </div>
+            </div>
+
+            <!-- BERITA 2 -->
+            <div class="news-card-wrapper">
+              <div class="news-card">
+                <div class="news-meta">MARKET · RESEARCH</div>
+                <h2>Binance Research — Latest Market Insights</h2>
+                <p>Explore Binance Research analysis covering market structure, institutional activity and major crypto trends.</p>
+                <div class="news-footer">
+                  <a href="https://www.binance.com/en/blog/research" target="_blank" rel="noopener noreferrer" class="read-source-link">Read source ↗</a>
+                  <button class="analyze-btn" data-asset="BNBUSDT" data-title="Binance Research — Latest Market Insights">ANALYZE IMPACT</button>
+                </div>
+              </div>
+              <div class="ai-analysis-container" hidden>
+                 <div class="ai-header">
+                    <div class="ai-badge">AI AGENT ANALYSIS</div>
+                    <div class="ai-metrics">
+                       <span class="metric-pill sentiment-badge">--</span>
+                       <span class="metric-pill impact-badge">Impact: --</span>
+                       <span class="metric-pill confidence-badge">Confidence: --%</span>
+                    </div>
+                 </div>
+                 <div class="ai-market-context">
+                    <div class="context-box"><span class="context-label">Live Price</span><span class="context-value live-price">--</span></div>
+                    <div class="context-box"><span class="context-label">24h Change</span><span class="context-value live-change">--</span></div>
+                 </div>
+                 <div class="ai-chart-wrapper">
+                    <div class="scanline"></div>
+                    <svg class="ai-inline-chart" viewBox="0 0 800 200" preserveAspectRatio="none"></svg>
+                 </div>
+                 <div class="ai-reasoning">
+                    <div class="reasoning-title">> SYSTEM REASONING:</div>
+                    <p class="reasoning-text">Awaiting analysis...</p>
+                 </div>
+              </div>
+            </div>
+
+            <!-- BERITA 3 -->
+            <div class="news-card-wrapper">
+              <div class="news-card">
+                <div class="news-meta">INSTITUTIONAL · BITCOIN</div>
+                <h2>Binance OTC & Execution Services Insights — August 2026</h2>
+                <p>Binance reported strong year-on-year OTC growth, reflecting increasing institutional demand for liquidity and execution.</p>
+                <div class="news-footer">
+                  <a href="https://www.binance.com/en/blog/" target="_blank" rel="noopener noreferrer" class="read-source-link">Read source ↗</a>
+                  <button class="analyze-btn" data-asset="BTCUSDT" data-title="Binance OTC & Execution Services Insights">ANALYZE IMPACT</button>
+                </div>
+              </div>
+              <div class="ai-analysis-container" hidden>
+                 <div class="ai-header">
+                    <div class="ai-badge">AI AGENT ANALYSIS</div>
+                    <div class="ai-metrics">
+                       <span class="metric-pill sentiment-badge">--</span>
+                       <span class="metric-pill impact-badge">Impact: --</span>
+                       <span class="metric-pill confidence-badge">Confidence: --%</span>
+                    </div>
+                 </div>
+                 <div class="ai-market-context">
+                    <div class="context-box"><span class="context-label">Live Price</span><span class="context-value live-price">--</span></div>
+                    <div class="context-box"><span class="context-label">24h Change</span><span class="context-value live-change">--</span></div>
+                 </div>
+                 <div class="ai-chart-wrapper">
+                    <div class="scanline"></div>
+                    <svg class="ai-inline-chart" viewBox="0 0 800 200" preserveAspectRatio="none"></svg>
+                 </div>
+                 <div class="ai-reasoning">
+                    <div class="reasoning-title">> SYSTEM REASONING:</div>
+                    <p class="reasoning-text">Awaiting analysis...</p>
+                 </div>
+              </div>
+            </div>
+
+            <!-- BERITA 4 -->
+            <div class="news-card-wrapper">
+              <div class="news-card">
+                <div class="news-meta">ETHEREUM · MARKET</div>
+                <h2>Ethereum Market & Institutional Developments</h2>
+                <p>Follow the latest Ethereum-related market analysis, institutional developments and ecosystem updates.</p>
+                <div class="news-footer">
+                  <a href="https://www.binance.com/en/blog/" target="_blank" rel="noopener noreferrer" class="read-source-link">Read source ↗</a>
+                  <button class="analyze-btn" data-asset="ETHUSDT" data-title="Ethereum Market & Institutional Developments">ANALYZE IMPACT</button>
+                </div>
+              </div>
+              <div class="ai-analysis-container" hidden>
+                 <div class="ai-header">
+                    <div class="ai-badge">AI AGENT ANALYSIS</div>
+                    <div class="ai-metrics">
+                       <span class="metric-pill sentiment-badge">--</span>
+                       <span class="metric-pill impact-badge">Impact: --</span>
+                       <span class="metric-pill confidence-badge">Confidence: --%</span>
+                    </div>
+                 </div>
+                 <div class="ai-market-context">
+                    <div class="context-box"><span class="context-label">Live Price</span><span class="context-value live-price">--</span></div>
+                    <div class="context-box"><span class="context-label">24h Change</span><span class="context-value live-change">--</span></div>
+                 </div>
+                 <div class="ai-chart-wrapper">
+                    <div class="scanline"></div>
+                    <svg class="ai-inline-chart" viewBox="0 0 800 200" preserveAspectRatio="none"></svg>
+                 </div>
+                 <div class="ai-reasoning">
+                    <div class="reasoning-title">> SYSTEM REASONING:</div>
+                    <p class="reasoning-text">Awaiting analysis...</p>
+                 </div>
+              </div>
+            </div>
+
+            <!-- BERITA 5 -->
+            <div class="news-card-wrapper">
+              <div class="news-card">
+                <div class="news-meta">SOLANA · ECOSYSTEM</div>
+                <h2>Solana Ecosystem & Market Developments</h2>
+                <p>Discover the latest Solana ecosystem developments and market trends from Binance's crypto coverage.</p>
+                <div class="news-footer">
+                  <a href="https://www.binance.com/en/blog/" target="_blank" rel="noopener noreferrer" class="read-source-link">Read source ↗</a>
+                  <button class="analyze-btn" data-asset="SOLUSDT" data-title="Solana Ecosystem & Market Developments">ANALYZE IMPACT</button>
+                </div>
+              </div>
+              <div class="ai-analysis-container" hidden>
+                 <div class="ai-header">
+                    <div class="ai-badge">AI AGENT ANALYSIS</div>
+                    <div class="ai-metrics">
+                       <span class="metric-pill sentiment-badge">--</span>
+                       <span class="metric-pill impact-badge">Impact: --</span>
+                       <span class="metric-pill confidence-badge">Confidence: --%</span>
+                    </div>
+                 </div>
+                 <div class="ai-market-context">
+                    <div class="context-box"><span class="context-label">Live Price</span><span class="context-value live-price">--</span></div>
+                    <div class="context-box"><span class="context-label">24h Change</span><span class="context-value live-change">--</span></div>
+                 </div>
+                 <div class="ai-chart-wrapper">
+                    <div class="scanline"></div>
+                    <svg class="ai-inline-chart" viewBox="0 0 800 200" preserveAspectRatio="none"></svg>
+                 </div>
+                 <div class="ai-reasoning">
+                    <div class="reasoning-title">> SYSTEM REASONING:</div>
+                    <p class="reasoning-text">Awaiting analysis...</p>
+                 </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
